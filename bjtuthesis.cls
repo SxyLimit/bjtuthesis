@@ -131,7 +131,6 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{tabularx}
 \RequirePackage{subcaption}
-\RequirePackage{pgfplots}
 \RequirePackage{tikz}
 \RequirePackage{multicol}
 \RequirePackage{setspace}
@@ -233,8 +232,8 @@
 \renewcommand\tableofcontents{%
     \chapter*{\makebox[\linewidth]{\zihao{-2} 目\hspace{2em}录}
         \@mkboth{\MakeUppercase \contentsname}{}}% ADDED
-    \addcontentsline{toc}{part}{\color{black}目\hspace{2em}录}%
-	\vspace{-0.5cm}
+    \addcontentsline{toc}{part}{目\hspace{2em}录}%
+    \vspace{-0.5cm}
     \@starttoc{toc}%
     } 
 \makeatother
@@ -306,7 +305,7 @@
 {\zihao{5}
 	{\centering\chapter*{\heiti \bibname}}
 	\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
-	\addcontentsline{toc}{chapter}{\heiti 参考文献}
+	\addcontentsline{toc}{part}{参考文献}
 	\list{\@biblabel{\@arabic\c@enumiv}}%
 	{\settowidth\labelwidth{\@biblabel{#1}}%
 		\leftmargin\labelwidth
@@ -355,7 +354,7 @@
 	\thispagestyle{bjtufancy}
 	\chapter*{\makebox[\linewidth]{\zihao{-2}中文摘要}}
 	\markboth{中文摘要}{}
-	\addcontentsline{toc}{part}{\color{black}中文摘要}
+	\addcontentsline{toc}{part}{中文摘要}
 }{}
 
 %英文摘要
@@ -363,7 +362,7 @@
 	\thispagestyle{bjtufancy}
 	\chapter*{\makebox[\linewidth]{\zihao{-2}ABSTRACT}}
 	\markboth{英文摘要}{}
-	\addcontentsline{toc}{part}{\color{black}ABSTRACT}
+	\addcontentsline{toc}{part}{ABSTRACT}
 }{}
 
 %致谢
@@ -371,9 +370,8 @@
 	\thispagestyle{bjtufancy}
 	\chapter*{\makebox[\linewidth]{\zihao{-2}致\hspace{2em}谢}}
 	\markboth{致谢}{}
-	\addcontentsline{toc}{part}{\color{black}致\hspace{2em}谢}
+	\addcontentsline{toc}{part}{致\hspace{2em}谢}
 }{}
-
 
 %附录
 \fancypagestyle{bjtufancyappendix}{
@@ -383,7 +381,7 @@
 \newcommand{\appendixfront}{        
         \chapter*{\makebox[\linewidth]{\zihao{-2}附\hspace{2em}录}}
         \markboth{附录}{}
-        \addcontentsline{toc}{part}{\color{black}附\hspace{2em}录}
+        \addcontentsline{toc}{part}{附\hspace{2em}录}
         \bjtusongti\zihao{5}
 }
 
