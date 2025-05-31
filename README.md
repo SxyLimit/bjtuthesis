@@ -4,11 +4,11 @@
 
 网上虽然有各种北交大非官方的模板，但是格式都与学校的略有差别，本模板严格参照北京交通大学计算机学院的本科生毕业论文Word模板编写，旨在为学弟学妹们提供便利。
 
-##### 您可以点击此处预览模板样式：[查看 PDF 文档](https://pangsmpang.github.io/pdfReader/pdf/bjtuthesis.pdf)
+#### 如需预览模板样式，请点击以下链接：[正常模板样式](https://pangsmpang.github.io/pdfReader/pdf/bjtuthesis.pdf) | [盲审模板样式](https://pangsmpang.github.io/pdfReader/pdf/bjtuthesis_blindreview.pdf)
 
-##### 如果您发现格式问题，欢迎[在此处](https://github.com/PangSMPang/bjtuthesis/issues)提交issue！
+#### 如果您发现格式问题，欢迎[在此处](https://github.com/PangSMPang/bjtuthesis/issues)提交issue！
 
-##### 如果您想要增加模板功能，欢迎[在此处](https://github.com/PangSMPang/bjtuthesis/pulls)提交PR！
+#### 如果您想要增加模板功能，欢迎[在此处](https://github.com/PangSMPang/bjtuthesis/pulls)提交PR！
 
 本模板基于 [BJTUThesisTemplete](https://github.com/billhu0228/BJTUThesisTemplete) 修改而来，在原模板基础上做了大量修改，并对整体结构进行了重构优化。下面介绍本模板的使用方法。
 

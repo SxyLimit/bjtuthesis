@@ -8,7 +8,7 @@
 %
 %   Creation Date : 2025-05-13
 %
-%   Author : PangSMPang (pangsmpang325@gmail.com)
+%   Author : PangSMPang (pangsmpang@325gmail.com)
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{bjtuthesis}[Beijing Jiaotong University Thesis and Design Template, PangSMPang@gmail.com]
 
@@ -57,7 +57,12 @@
 \newcommand{\makecover}{
     \vspace*{0.13cm}
     \begin{center}
-    \includegraphics[width=108mm]{logo/logo.png}
+    \ifbjtuthesis@BlindReview
+        \vspace{2cm}
+    \else
+        \includegraphics[width=108mm]{logo/logo.png}
+    \fi
+        
 
     {\vspace{0.85cm}\zihao{2}\bjtusongti \textbf{本科毕业设计（论文）}}
     \vspace{2.25cm}
@@ -111,13 +116,18 @@
 
     \vspace*{0.8cm}
 
-    \zihao{-3}\bjtusongti \textbf{北京交通大学}\vspace*{1ex}
+    \ifbjtuthesis@BlindReview
+        \vspace{1cm}
+    \else
+        \zihao{-3}\bjtusongti \textbf{北京交通大学}\vspace*{1ex}
+    \fi
 
     \yearmonth
     \end{center}
 
     \newpage
 }
+
 
 %宏包
 \RequirePackage[dvipsnames]{xcolor}
@@ -129,7 +139,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
-\RequirePackage{tabularx}
+\RequirePackage{tabularx}   
 \RequirePackage{subcaption}
 \RequirePackage{tikz}
 \RequirePackage{multicol}
@@ -252,40 +262,78 @@
 \titlecontents{section}[3em]{\hspace{0em}}{\contentslabel{2em}}{\bjtusongti \zihao{-4}}{\titlerule*[0.5pc]{.}\contentspage}[\vspace{0ex}]
 \titlecontents{subsection}[5em]{\hspace{0em}}{\contentslabel{3em}}{\bjtusongti \zihao{-4}}{\titlerule*[0.5pc]{.}\contentspage}[\vspace{0ex}]
 
-% 页眉
+\makeatletter
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\fancypagestyle{bjtufancy}{
+\ifbjtuthesis@BlindReview
+    % ========================
+    % 盲审模式
+    % ========================
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+    \fancypagestyle{bjtufancy}{
+        \fancyhead[CE,CO]{}
+        \fancyhead[L]{\zihao{4}\hwzs \hspace*{0.8em}毕业设计（论文）}
+        \fancyhead[R]{\zihao{4}\hwzs \leftmark\hspace*{0.8em}}
+        \fancyfoot[CO,CE]{\zihao{5}\thepage}
+        \makeatletter
+        \renewcommand{\headrule}{\hrule height 2.5pt \vspace{1pt}\hrule height 1pt}
+    }
+    
+    \fancypagestyle{fancynofoot}{
     \fancyhead[CE,CO]{}
-    \fancyhead[L]{\zihao{4}\hwzs \hspace*{0.8em}北京交通大学毕业设计（论文）}
-    \fancyhead[R]{\zihao{4}\hwzs \leftmark\hspace*{0.8em}}
-    \fancyfoot[CO,CE]{\zihao{5}\thepage}
-    \makeatletter
-    \renewcommand{\headrule}{\hrule height 2.5pt \vspace{1pt}\hrule height 1pt}
-}
-
-\fancypagestyle{fancynofoot}{
-\fancyhead[CE,CO]{}
-    \fancyhead[L]{\zihao{4}\hwzs \hspace*{0.8em}北京交通大学毕业设计（论文）}
-    \fancyhead[R]{\zihao{4}\hwzs \leftmark\hspace*{0.8em}}
-    \fancyfoot{}
-    \makeatletter
-    \renewcommand{\headrule}{\hrule height 2.5pt \vspace{1pt}\hrule height 1pt}
-}
-
-\fancypagestyle{bjtufancymain}{
-	\fancyhead[R]{\zihao{4}\hwzs 正文\hspace*{0.8em}}
-}
-
-
-
-\fancypagestyle{plain}{
-\fancyhead{}
-\fancyhead[CE]{\zihao{5}\hspace{2em}北京交通大学毕业设计（论文）}
-\fancyhead[CO]{\zihao{5}\hspace{2em}\leftmark}
-\fancyfoot[CO,CE]{\zihao{-5}\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+        \fancyhead[L]{\zihao{4}\hwzs \hspace*{0.8em}毕业设计（论文）}
+        \fancyhead[R]{\zihao{4}\hwzs \leftmark\hspace*{0.8em}}
+        \fancyfoot{}
+        \makeatletter
+        \renewcommand{\headrule}{\hrule height 2.5pt \vspace{1pt}\hrule height 1pt}
+    }
+    
+    \fancypagestyle{bjtufancymain}{
+    	\fancyhead[R]{\zihao{4}\hwzs 正文\hspace*{0.8em}}
+    }
+    
+    \fancypagestyle{plain}{
+    \fancyhead{}
+    \fancyhead[CE]{\zihao{5}\hspace{2em}毕业设计（论文）}
+    \fancyhead[CO]{\zihao{5}\hspace{2em}\leftmark}
+    \fancyfoot[CO,CE]{\zihao{-5}\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    }
+\else
+    % ========================
+    % 非盲审模式
+    % ========================
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+    \fancypagestyle{bjtufancy}{
+        \fancyhead[CE,CO]{}
+        \fancyhead[L]{\zihao{4}\hwzs \hspace*{0.8em}北京交通大学毕业设计（论文）}
+        \fancyhead[R]{\zihao{4}\hwzs \leftmark\hspace*{0.8em}}
+        \fancyfoot[CO,CE]{\zihao{5}\thepage}
+        \makeatletter
+        \renewcommand{\headrule}{\hrule height 2.5pt \vspace{1pt}\hrule height 1pt}
+    }
+    
+    \fancypagestyle{fancynofoot}{
+    \fancyhead[CE,CO]{}
+        \fancyhead[L]{\zihao{4}\hwzs \hspace*{0.8em}北京交通大学毕业设计（论文）}
+        \fancyhead[R]{\zihao{4}\hwzs \leftmark\hspace*{0.8em}}
+        \fancyfoot{}
+        \makeatletter
+        \renewcommand{\headrule}{\hrule height 2.5pt \vspace{1pt}\hrule height 1pt}
+    }
+    
+    \fancypagestyle{bjtufancymain}{
+    	\fancyhead[R]{\zihao{4}\hwzs 正文\hspace*{0.8em}}
+    }
+    
+    \fancypagestyle{plain}{
+    \fancyhead{}
+    \fancyhead[CE]{\zihao{5}\hspace{2em}北京交通大学毕业设计（论文）}
+    \fancyhead[CO]{\zihao{5}\hspace{2em}\leftmark}
+    \fancyfoot[CO,CE]{\zihao{-5}\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    }
+\fi
+\makeatother
 %========================================================================%
 % 自定义内容
 %========================================================================%
