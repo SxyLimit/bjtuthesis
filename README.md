@@ -37,6 +37,20 @@
 * 请在`figure/`文件夹下放置插图
 * 请在`reference/ref.bib`文件内更新引用文献信息
 
+### 🧷 Typst 版本
+
+仓库同时提供了与 LaTeX 模板等价的 Typst 实现：
+
+1. 在根目录编辑 `bjtuthesis.typ` 中的个人信息与参数设置（`two-side`、`blind-review`、`number-by-chapter`）。
+2. 在 `typst/chapters/` 与 `typst/frontmatter/` 目录中补全对应章节内容。
+3. 安装 [Typst](https://typst.app) 后执行：
+
+   ```bash
+   typst compile bjtuthesis.typ
+   ```
+
+   生成的 PDF 将输出到当前目录，可通过 `typst watch bjtuthesis.typ` 实现实时编译。
+
 ---
 
 ## ✅ 编译方式
